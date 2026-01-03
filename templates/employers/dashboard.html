@@ -82,9 +82,34 @@
                                 {{ job.created_at|date:"d M Y" }}
                             </div>
 
+                            <div class="flex items-center space-x-4">
+
+                   <a href="{% url 'job-edit' job.id %}"
+                     class="text-blue-400 hover:underline text-sm">
+                         Edit
+                   </a>
+
+                   <a href="{% url 'job-toggle' job.id %}"
+                   class="text-sm {% if job.is_active %}text-yellow-400{% else %}text-green-400{% endif %}">
+                   {% if job.is_active %}
+                       Deactivate
+                   {% else %}
+                   Activate
+                  {% endif %}
+                 </a>
+
+                 <a href="{% url 'job-delete' job.id %}"
+                  class="text-red-400 hover:underline text-sm">
+                Delete
+                </a>
+
+
+               </div>
+
                         </div>
                     {% endfor %}
                 </div>
+
             {% else %}
                 <!-- EMPTY STATE -->
                 <div class="bg-gray-900 border border-gray-800 rounded-xl p-10 text-center">
