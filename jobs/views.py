@@ -52,8 +52,6 @@ def toggle_job_status(request, job_id):
     return redirect('employer-dashboard')
 
 
-
-
 @login_required
 def delete_job(request, job_id):
     job = get_object_or_404(Job, id=job_id, employer=request.user)
